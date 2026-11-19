@@ -1,0 +1,439 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Sowrav Anilkumar — Business &amp; Data Analyst</title>
+<meta name="description" content="Sowrav Anilkumar — Business & Data Analyst. SQL, Power BI, Python. Former Dell Technologies Global BI; M.S. Business Analytics, University of New Haven.">
+<meta property="og:title" content="Sowrav Anilkumar — Business & Data Analyst">
+<meta property="og:description" content="Data refined. Decisions redefined. SQL, Power BI and Python projects.">
+<meta property="og:type" content="website">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23F39237'/%3E%3Ctext x='32' y='42' font-family='Arial' font-weight='700' font-size='28' text-anchor='middle' fill='%2311141A'%3ESA%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500;600&family=Space+Grotesk:wght@500;600;700&display=swap">
+<style>
+  /* ===== THEME — change colors here ===== */
+  :root{
+    --accent:#F39237;      /* main orange */
+    --accent-text:#92571F; /* darker orange for text on white */
+    --tint:#FFF4EA;        /* light peach background */
+    --tint-2:#FFD2AD;      /* highlight peach */
+    --line:#F3D9C4;
+    --line-2:#E8C3A5;
+    --ink:#11141A;
+    --body:#3E4550;
+    --muted:#545B66;
+    --dark:#1F1712;
+    --dark-2:#2A1F19;
+    --dark-line:#3A2C24;
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{margin:0;background:#fff;color:var(--ink);font-family:Inter,system-ui,sans-serif}
+  a{color:var(--ink)} a:hover{color:var(--accent-text)}
+  h1,h2,h3{font-family:'Space Grotesk',sans-serif;margin:0}
+  .mono{font-family:'JetBrains Mono',ui-monospace,monospace}
+  .wrap{max-width:1200px;margin:0 auto;padding:0 24px}
+  .label{font-family:'JetBrains Mono',monospace;font-size:14px;font-weight:600;color:var(--accent-text)}
+  .h2{font-size:clamp(34px,4.5vw,52px);letter-spacing:-.02em;line-height:1.05}
+  .lift{transition:transform .18s ease,box-shadow .18s ease}
+  .lift:hover{transform:translateY(-4px);box-shadow:0 14px 30px rgba(17,20,26,.10)}
+  .press{transition:transform .12s ease,background .15s ease,color .15s ease;cursor:pointer}
+  .press:hover{transform:translateY(-1px)} .press:active{transform:scale(.97)}
+  .blink{animation:blink 1s steps(1) infinite} @keyframes blink{50%{opacity:0}}
+  @media (prefers-reduced-motion:reduce){.lift,.press{transition:none}.blink{animation:none}html{scroll-behavior:auto}}
+
+  /* nav */
+  header{position:sticky;top:0;z-index:10;background:rgba(255,255,255,.92);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+  nav{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:12px;padding:14px 24px;max-width:1200px;margin:0 auto}
+  .brand{display:flex;align-items:center;gap:10px;text-decoration:none}
+  .logo{width:36px;height:36px;border-radius:10px;background:var(--accent);display:flex;align-items:center;justify-content:center;font:700 16px 'Space Grotesk',sans-serif}
+  .brand span:last-child{font:600 18px 'Space Grotesk',sans-serif}
+  .navlinks{display:flex;flex-wrap:wrap;align-items:center;gap:4px}
+  .navlinks a{padding:12px 14px;font-size:15px;font-weight:500;text-decoration:none}
+  .navlinks a.cta{background:var(--accent);border-radius:999px;font-weight:600;padding:12px 18px}
+
+  /* buttons */
+  .btn{display:inline-flex;align-items:center;gap:8px;min-height:48px;padding:0 22px;border-radius:12px;font-weight:600;font-size:16px;text-decoration:none;border:1.5px solid var(--ink);color:var(--ink);background:transparent}
+  .btn.fill{background:var(--accent);border-color:var(--accent)}
+  .btn.dark{background:var(--ink);border-color:var(--ink);color:#fff}
+  .btn.dark:hover{color:#fff}
+
+  /* hero */
+  .hero{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,460px),1fr));gap:56px;align-items:center;padding-top:88px;padding-bottom:56px}
+  .hero-copy{display:flex;flex-direction:column;gap:24px}
+  .pill{align-self:flex-start;display:inline-flex;align-items:center;gap:8px;padding:8px 14px;border:1px solid var(--line);border-radius:999px;font-size:14px;font-weight:500}
+  .dot{width:8px;height:8px;border-radius:50%;background:var(--accent)}
+  .hero h1{font-weight:700;font-size:clamp(48px,7vw,84px);line-height:1;letter-spacing:-.03em}
+  .hl{background:var(--tint-2);padding:0 10px;border-radius:10px}
+  .lead{margin:0;font-size:20px;line-height:1.55;color:var(--body);max-width:540px}
+  #word{font-weight:600;color:var(--accent-text);border-bottom:3px solid var(--accent);transition:opacity .2s}
+  .row{display:flex;flex-wrap:wrap;gap:12px}
+
+  /* console */
+  .console{background:var(--dark);border-radius:20px;overflow:hidden;box-shadow:0 24px 60px rgba(17,20,26,.22);font-family:'JetBrains Mono',monospace}
+  .console-top{display:flex;align-items:center;gap:8px;padding:14px 18px;border-bottom:1px solid var(--dark-line)}
+  .console-top i{width:12px;height:12px;border-radius:50%;display:block}
+  .console-top span{margin-left:10px;font-size:13px;color:#9AA3AE}
+  .qbtns{padding:16px 18px 6px;display:flex;flex-wrap:wrap;gap:8px}
+  .qbtn{min-height:44px;padding:8px 12px;border-radius:8px;font:500 13px 'JetBrains Mono',monospace;background:var(--dark-2);color:#E8EAE4;border:1px solid #4A372C}
+  .qbtn.on{background:var(--tint-2);color:var(--ink);border-color:var(--tint-2)}
+  .qout{padding:12px 18px 22px;min-height:236px}
+  .prompt{font-size:14px;color:#E8EAE4;margin-bottom:12px}
+  .prompt b{color:#FFA263;font-weight:400}
+  .qtable{border:1px solid var(--dark-line);border-radius:10px;overflow:hidden}
+  .qrow{display:grid;grid-template-columns:120px 1fr;gap:12px;padding:10px 14px;border-bottom:1px solid var(--dark-line);font-size:14px}
+  .qrow:last-child{border-bottom:0}
+  .qrow span:first-child{color:#9AA3AE} .qrow span:last-child{color:#fff;overflow-wrap:anywhere}
+  .qmeta{margin-top:10px;font-size:13px;color:#9AA3AE}
+
+  /* stats */
+  .stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px;padding-bottom:72px}
+  .stat{background:#fff;border:1px solid var(--line);border-radius:16px;padding:24px;display:flex;flex-direction:column;gap:6px}
+  .stat b{font:700 44px 'Space Grotesk',sans-serif;letter-spacing:-.02em}
+  .stat span{font-size:15px;color:var(--muted)}
+  .stat.peach{background:var(--tint-2);border-color:#F5B98A} .stat.peach span{color:#5A2508}
+
+  /* about */
+  .about{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,340px),1fr));gap:56px;align-items:center;padding-top:24px;padding-bottom:96px}
+  .photo{position:relative;max-width:420px;width:100%;justify-self:center}
+  .photo .back{position:absolute;inset:18px -18px -18px 18px;border-radius:28px;background:var(--tint-2)}
+  .photo .frame{position:relative;aspect-ratio:4/5;border-radius:28px;background:var(--tint);border:2px solid var(--line);display:flex;align-items:center;justify-content:center;overflow:hidden}
+  .photo .frame img{width:100%;height:100%;object-fit:cover}
+  .mono-badge{width:140px;height:140px;border-radius:50%;background:var(--accent);display:flex;align-items:center;justify-content:center;font:700 52px 'Space Grotesk',sans-serif}
+  .photo .loc{position:absolute;right:-10px;bottom:28px;padding:10px 16px;border-radius:999px;background:var(--ink);color:#fff;font-size:14px;font-weight:600}
+  .about-copy{display:flex;flex-direction:column;gap:20px}
+  .about-copy p{margin:0;font-size:18px;line-height:1.65;color:var(--body)}
+  .chips{display:flex;flex-wrap:wrap;gap:8px}
+  .chip{font-size:14px;font-weight:500;padding:8px 14px;border-radius:999px;background:var(--tint);border:1px solid var(--line)}
+
+  /* work */
+  #work{background:var(--tint);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+  .section{padding-top:88px;padding-bottom:88px;display:flex;flex-direction:column;gap:32px}
+  .work-head{display:flex;flex-wrap:wrap;align-items:flex-end;justify-content:space-between;gap:20px}
+  .stack{display:flex;flex-direction:column;gap:10px}
+  .filters{display:flex;flex-wrap:wrap;gap:8px}
+  .fbtn{min-height:44px;padding:10px 16px;border-radius:999px;font:600 14px Inter,sans-serif;background:#fff;color:var(--ink);border:1.5px solid var(--line-2)}
+  .fbtn.on{background:var(--ink);color:#fff;border-color:var(--ink)}
+  .cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,340px),1fr));gap:20px;align-items:start}
+  .card{background:#fff;border:1px solid var(--line);border-radius:20px;padding:28px;display:flex;flex-direction:column;gap:16px}
+  .card-top{display:flex;align-items:center;justify-content:space-between;gap:12px}
+  .card-top span:first-child{font-family:'JetBrains Mono',monospace;font-size:13px;color:var(--muted)}
+  .num{width:44px;height:44px;border-radius:12px;display:flex;align-items:center;justify-content:center;font:700 15px 'Space Grotesk',sans-serif;background:var(--accent)}
+  .card h3{font-size:26px;line-height:1.15;letter-spacing:-.01em}
+  .card p{margin:0;font-size:16px;line-height:1.55;color:var(--body)}
+  .metrics{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+  .metric{background:var(--tint);border:1px solid var(--line);border-radius:12px;padding:12px 14px;display:flex;flex-direction:column;gap:2px}
+  .metric b{font:700 22px 'Space Grotesk',sans-serif} .metric span{font-size:13px;color:var(--muted)}
+  .tags{display:flex;flex-wrap:wrap;gap:6px}
+  .tag{font-size:13px;font-weight:500;padding:5px 10px;border-radius:999px;background:var(--tint);border:1px solid var(--line)}
+  .details{margin:0;padding:16px 0 0 18px;border-top:1px dashed var(--line-2);display:flex;flex-direction:column;gap:8px;font-size:15px;line-height:1.5;color:var(--body)}
+  .tbtn{min-height:44px;padding:10px 16px;border-radius:10px;border:1.5px solid var(--ink);background:transparent;color:var(--ink);font:600 14px Inter,sans-serif}
+  .glink{display:inline-flex;align-items:center;min-height:44px;padding:0 6px;font-size:14px;font-weight:600;color:var(--accent-text)}
+
+  /* toolbox */
+  .tool-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,420px),1fr));gap:28px;align-items:stretch}
+  .skills{display:flex;flex-wrap:wrap;align-content:flex-start;gap:10px}
+  .sbtn{min-height:48px;padding:12px 20px;border-radius:14px;font:600 16px Inter,sans-serif;background:#fff;color:var(--ink);border:1.5px solid var(--line)}
+  .sbtn.on{background:var(--accent);border-color:var(--accent)}
+  .skill-panel{background:var(--dark);color:#fff;border-radius:20px;padding:32px;display:flex;flex-direction:column;gap:14px;min-height:220px}
+  .skill-panel .lvl{font-family:'JetBrains Mono',monospace;font-size:13px;color:#FFA263}
+  .skill-panel h3{font-size:34px;letter-spacing:-.01em}
+  .skill-panel p{margin:0;font-size:17px;line-height:1.6;color:#D3D7DD}
+  .used{margin-top:auto;display:flex;flex-wrap:wrap;gap:8px}
+  .used span{font-size:13px;padding:6px 12px;border-radius:999px;background:var(--dark-line);color:#E8EAE4}
+
+  /* journey */
+  #journey{background:var(--accent)}
+  #journey .label{color:var(--ink)}
+  .steps{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:12px}
+  .step{min-height:120px;text-align:left;padding:20px;border-radius:16px;display:flex;flex-direction:column;gap:6px;font-family:Inter,sans-serif;background:#FBC593;color:var(--ink);border:1.5px solid #E07F24}
+  .step.on{background:var(--ink);color:#fff;border-color:var(--ink)}
+  .step small{font-family:'JetBrains Mono',monospace;font-size:13px;opacity:.8}
+  .step strong{font:600 20px/1.2 'Space Grotesk',sans-serif}
+  .step span{font-size:14px;opacity:.85}
+  .step-panel{background:#fff;border:1px solid #E07F24;border-radius:20px;padding:32px;display:flex;flex-direction:column;gap:14px}
+  .step-panel h3{font-size:28px}
+  .step-panel ul{margin:0;padding-left:20px;display:flex;flex-direction:column;gap:10px;font-size:17px;line-height:1.55;color:var(--body)}
+
+  /* contact */
+  .contact{padding-top:96px;padding-bottom:72px}
+  .contact-box{background:var(--accent);border-radius:28px;padding:clamp(32px,6vw,72px);display:flex;flex-direction:column;gap:24px}
+  .contact-box h2{font-size:clamp(38px,6vw,72px);letter-spacing:-.03em;line-height:1;max-width:820px}
+  .contact-box p{margin:0;font-size:18px;line-height:1.55;max-width:620px}
+  footer{display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px;padding:28px 4px 0;font-size:14px;color:var(--muted)}
+</style>
+</head>
+<body>
+
+<header>
+  <nav>
+    <a class="brand" href="#top"><span class="logo">SA</span><span>Sowrav Anilkumar</span></a>
+    <div class="navlinks">
+      <a href="#about">About</a>
+      <a href="#work">Work</a>
+      <a href="#skills">Toolbox</a>
+      <a href="#journey">Journey</a>
+      <a class="cta press" href="#contact">Let’s talk</a>
+    </div>
+  </nav>
+</header>
+
+<main id="top">
+  <!-- HERO -->
+  <section class="wrap hero">
+    <div class="hero-copy">
+      <span class="pill"><span class="dot"></span>Open to Business Analyst, operations &amp; analytics roles</span>
+      <h1>Data refined.<br>Decisions <span class="hl">redefined.</span></h1>
+      <p class="lead">Hi, I’m Sowrav Anilkumar — a business &amp; data analyst who turns <span id="word">messy spreadsheets</span> into clear decisions with SQL, Power BI and Python.</p>
+      <div class="row">
+        <a class="btn fill press" href="#work">See my work
+          <svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+        </a>
+        <a class="btn press" href="https://github.com/AnilkumarSowrav" target="_blank" rel="noopener">GitHub</a>
+      </div>
+    </div>
+
+    <div class="console">
+      <div class="console-top">
+        <i aria-hidden="true" style="background:#FF6159"></i><i aria-hidden="true" style="background:#FFBD2E"></i><i aria-hidden="true" style="background:#28C840"></i>
+        <span>sowrav.sql — click a query to run it</span>
+      </div>
+      <div class="qbtns" id="qbtns" role="group" aria-label="Queries"></div>
+      <div class="qout" aria-live="polite">
+        <div class="prompt"><b>sowrav=#</b> <span id="qlabel"></span><span id="qcursor" class="blink" style="color:#FFA263" hidden>▌</span></div>
+        <div id="qresult"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- STATS -->
+  <section class="wrap stats">
+    <div class="stat lift"><b>$450M+</b><span>deal portfolios supported at Dell</span></div>
+    <div class="stat lift"><b>3 regions</b><span>AMER, EMEA &amp; APJ operations</span></div>
+    <div class="stat lift"><b>2.5 yrs</b><span>Business Ops &amp; Global BI</span></div>
+    <div class="stat peach lift"><b>3.74 GPA</b><span>M.S. Business Analytics</span></div>
+  </section>
+
+  <!-- ABOUT -->
+  <section id="about" class="wrap about">
+    <div class="photo">
+      <div class="back" aria-hidden="true"></div>
+      <div class="frame">
+        <!-- TODO: headshot. Upload photo.jpg to the repo, then replace the line below with:
+             <img src="photo.jpg" alt="Sowrav Anilkumar"> -->
+        <span class="mono-badge" role="img" aria-label="Sowrav Anilkumar monogram">SA</span>
+      </div>
+      <span class="loc">West Haven, CT</span>
+    </div>
+    <div class="about-copy">
+      <span class="label">ABOUT ME</span>
+      <h2 class="h2">An engineer’s mindset, an analyst’s toolkit.</h2>
+      <p>I started out in Mechanical Engineering, then spent about two and a half years at Dell Technologies in Bengaluru as a Senior Representative in Business Operations &amp; Global BI, supporting $450M+ deal portfolios across AMER, EMEA and APJ.</p>
+      <p>That work pulled me deeper into analytics, so I earned an M.S. in Business Analytics at the University of New Haven (GPA 3.74). Now I build projects end to end, from SQL Server data models to Power BI dashboards and Azure AutoML models.</p>
+      <p>I’m looking for Business Analyst, operations and analytics roles where clean data leads to better decisions.</p>
+      <div class="chips">
+        <span class="chip">Mechanical Eng. → Analytics</span>
+        <span class="chip">Global BI experience</span>
+        <span class="chip">Lean Six Sigma coursework</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- WORK -->
+  <section id="work">
+    <div class="wrap section">
+      <div class="work-head">
+        <div class="stack">
+          <span class="label">01 / SELECTED WORK</span>
+          <h2 class="h2">Projects, filtered your way</h2>
+        </div>
+        <div class="filters" id="filters" role="group" aria-label="Filter projects by tool"></div>
+      </div>
+      <div class="cards" id="cards"></div>
+    </div>
+  </section>
+
+  <!-- TOOLBOX -->
+  <section id="skills" class="wrap section">
+    <div class="stack">
+      <span class="label">02 / TOOLBOX</span>
+      <h2 class="h2">Pick a tool, see where I’ve used it</h2>
+    </div>
+    <div class="tool-grid">
+      <div class="skills" id="skillbtns" role="group" aria-label="Skills"></div>
+      <div class="skill-panel" aria-live="polite">
+        <span class="lvl" id="slvl"></span>
+        <h3 id="sname"></h3>
+        <p id="swhere"></p>
+        <div class="used" id="sused"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- JOURNEY -->
+  <section id="journey">
+    <div class="wrap section">
+      <div class="stack">
+        <span class="label">03 / JOURNEY</span>
+        <h2 class="h2">From engineering to analytics</h2>
+      </div>
+      <div class="steps" id="steps"></div>
+      <div class="step-panel" aria-live="polite">
+        <h3 id="stitle"></h3>
+        <ul id="spoints"></ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact" class="wrap contact">
+    <div class="contact-box">
+      <span class="mono" style="font-size:14px;font-weight:600">04 / CONTACT</span>
+      <h2>Got data and a decision to make? Let’s talk.</h2>
+      <p>Based in West Haven, CT. Open to Business Analyst, operations and analytics roles.</p>
+      <div class="row">
+        <a class="btn dark press" href="mailto:sowrav1990@gmail.com">
+          <svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg>
+          Email me
+        </a>
+        <a class="btn press" href="https://www.linkedin.com/in/sowravanil" target="_blank" rel="noopener">LinkedIn</a>
+        <a class="btn press" href="https://github.com/AnilkumarSowrav" target="_blank" rel="noopener">GitHub</a>
+        <!-- TODO: résumé. Upload resume.pdf to the repo, then remove the comment marks around this line:
+        <a class="btn press" href="resume.pdf" target="_blank" rel="noopener">Résumé</a>
+        -->
+      </div>
+    </div>
+    <footer>
+      <span>© 2026 Sowrav Anilkumar · sowrav1990@gmail.com</span>
+      <span class="mono">Data refined. Decisions redefined.</span>
+    </footer>
+  </section>
+</main>
+
+<script>
+/* ===== CONTENT — edit text here ===== */
+const QUERIES = [
+  { id:'about', label:'SELECT * FROM about;', rows:[['name','Sowrav Anilkumar'],['email','sowrav1990@gmail.com'],['based_in','West Haven, CT'],['status','Open to BA, ops & analytics roles']] },
+  { id:'exp',   label:'SELECT * FROM experience;', rows:[['company','Dell Technologies, Bengaluru'],['title','Sr. Rep, Business Ops & Global BI'],['tenure','~2.5 years'],['scope','$450M+ deals · AMER / EMEA / APJ']] },
+  { id:'edu',   label:'SELECT * FROM education;', rows:[['degree','M.S. Business Analytics'],['school','University of New Haven'],['gpa','3.74 / 4.0'],['undergrad','B.E. Mechanical Eng., KSIT']] },
+  { id:'stack', label:'SELECT tool FROM stack;', rows:[['query','SQL · SQL Server'],['visualize','Power BI · DAX'],['code','Python · R'],['ml','Azure AutoML']] }
+];
+
+const PROJECTS = [
+  { id:'port', num:'01', kind:"Master's flagship project", title:'Port Authority NY/NJ Traffic Analysis', tags:['Python','Power BI','Azure ML'],
+    summary:'Analyzed bridge and tunnel traffic for the Port Authority of New York & New Jersey, pairing Azure AutoML models with an interactive Power BI dashboard.',
+    metrics:[],
+    details:['Machine-learning models built and compared in Azure AutoML','Python for data preparation and analysis','Power BI dashboard with the data embedded','Full report and project resources documented on GitHub'],
+    link:'' /* TODO: paste the Port Authority GitHub repo URL here */ },
+  { id:'ecom', num:'02', kind:'End-to-end portfolio build', title:'E-commerce Analytics', tags:['SQL','Python','Power BI'],
+    summary:'Designed a star-schema warehouse in SQL Server, generated realistic multi-year sales with Python, and built a two-page Power BI dashboard on top.',
+    metrics:[['$4.15M','total revenue'],['~7K','orders'],['300','customers'],['50','products']],
+    details:['Fact and dimension tables for sales, inventory, products, customers, suppliers and dates','Python (pyodbc + Faker) to populate data with Nov/Dec seasonal peaks','DAX measures: revenue, profit, orders and average order value','Geography page with a US revenue map and top-10 customers'],
+    link:'https://github.com/AnilkumarSowrav/Ecommerce-Analytics' },
+  { id:'var', num:'03', kind:'Dell Technologies', title:'Macroeconomic Forecasting', tags:['R'],
+    summary:'Built VAR (vector autoregression) macroeconomic forecasting models in R as part of the Business Operations & Global BI team.',
+    metrics:[],
+    details:['Vector autoregression models in R','Delivered within Dell’s Business Operations & Global BI function'],
+    link:'' }
+];
+const FILTERS = ['All','SQL','Python','Power BI','Azure ML','R'];
+
+const SKILLS = [
+  { name:'SQL', level:'daily driver', where:'Built a star-schema warehouse in SQL Server and wrote the joins, aggregates and HAVING queries behind my e-commerce analysis.', used:['E-commerce Analytics','Dell Global BI'] },
+  { name:'Power BI & DAX', level:'daily driver', where:'Dashboards with KPI cards, trend lines and geographic maps; DAX measures for revenue, profit, orders and average order value.', used:['E-commerce Analytics','Port Authority'] },
+  { name:'Python', level:'go-to for data work', where:'Generated and loaded realistic data with pyodbc and Faker; analysis in Jupyter notebooks.', used:['E-commerce Analytics','Port Authority'] },
+  { name:'Azure AutoML', level:'machine learning', where:'Trained and compared models for bridge and tunnel traffic analysis.', used:['Port Authority'] },
+  { name:'R', level:'forecasting', where:'VAR-based macroeconomic forecasting during my time at Dell.', used:['Dell Global BI'] },
+  { name:'Excel', level:'everyday analysis', where:'Quick analysis, reconciliation and reporting across business operations.', used:['Dell Business Ops'] },
+  { name:'Smartsheet', level:'project tracking', where:'Tracked projects and deliverables for Dell’s Business Operations team.', used:['Dell Business Ops'] },
+  { name:'Git & GitHub', level:'version control', where:'Every portfolio project is versioned and published with a README, screenshots and SQL scripts.', used:['E-commerce Analytics','Port Authority'] },
+  { name:'Lean Six Sigma', level:'process improvement', where:'Coursework in Lean Six Sigma methods for finding and fixing process bottlenecks.', used:['Operations'] }
+];
+
+const STEPS = [
+  { n:'STEP 01', title:'Mechanical Engineering', place:'B.E. · K.S. Institute of Science & Technology', points:['Bachelor of Engineering in Mechanical Engineering','A foundation in systems, process and structured problem-solving'] },
+  { n:'STEP 02', title:'Dell Technologies', place:'Bengaluru · ~2.5 years', points:['Senior Representative, Business Operations & Global BI','Supported $450M+ deal portfolios across AMER, EMEA and APJ','Built VAR-based macroeconomic forecasts in R','Tracked projects in Smartsheet'] },
+  { n:'STEP 03', title:'M.S. Business Analytics', place:'University of New Haven · GPA 3.74', points:['Graduate degree in Business Analytics','Flagship project: Port Authority NY/NJ bridge & tunnel traffic analysis','Hands-on with SQL, Power BI, Python, R and Azure AutoML'] },
+  { n:'NEXT', title:'Your team?', place:'West Haven, CT', points:['Looking for Business Analyst, operations and analytics roles','Bringing global BI experience plus a modern analytics toolkit'] }
+];
+
+const WORDS = ['messy spreadsheets','deal pipelines','raw sales data','traffic counts'];
+
+/* ===== BEHAVIOR ===== */
+const $ = (id) => document.getElementById(id);
+const esc = (s) => String(s).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const state = { q:'about', filter:'All', open:null, skill:'SQL', step:1 };
+let qTimer;
+
+function renderConsole(running){
+  $('qbtns').innerHTML = QUERIES.map(q =>
+    `<button type="button" class="qbtn press${q.id===state.q?' on':''}" data-q="${q.id}" aria-pressed="${q.id===state.q}">${esc(q.label)}</button>`).join('');
+  const q = QUERIES.find(x => x.id === state.q);
+  $('qlabel').textContent = q.label;
+  $('qcursor').hidden = !running;
+  $('qresult').innerHTML = running
+    ? '<div style="font-size:14px;color:#9AA3AE">Running query…</div>'
+    : `<div class="qtable">${q.rows.map(r => `<div class="qrow"><span>${esc(r[0])}</span><span>${esc(r[1])}</span></div>`).join('')}</div><div class="qmeta">(${q.rows.length} rows)</div>`;
+}
+$('qbtns').addEventListener('click', e => {
+  const b = e.target.closest('[data-q]'); if(!b) return;
+  state.q = b.dataset.q; renderConsole(true);
+  clearTimeout(qTimer); qTimer = setTimeout(() => renderConsole(false), 450);
+});
+
+function renderWork(){
+  $('filters').innerHTML = FILTERS.map(f =>
+    `<button type="button" class="fbtn press${f===state.filter?' on':''}" data-f="${esc(f)}" aria-pressed="${f===state.filter}">${esc(f)}</button>`).join('');
+  $('cards').innerHTML = PROJECTS.filter(p => state.filter==='All' || p.tags.includes(state.filter)).map(p => {
+    const open = state.open === p.id;
+    return `<article class="card lift">
+      <div class="card-top"><span>${esc(p.kind)}</span><span class="num">${p.num}</span></div>
+      <h3>${esc(p.title)}</h3>
+      <p>${esc(p.summary)}</p>
+      ${p.metrics.length ? `<div class="metrics">${p.metrics.map(m => `<div class="metric"><b>${esc(m[0])}</b><span>${esc(m[1])}</span></div>`).join('')}</div>` : ''}
+      <div class="tags">${p.tags.map(t => `<span class="tag">${esc(t)}</span>`).join('')}</div>
+      ${open ? `<ul class="details">${p.details.map(d => `<li>${esc(d)}</li>`).join('')}</ul>` : ''}
+      <div class="row" style="gap:10px;align-items:center">
+        <button type="button" class="tbtn press" data-open="${p.id}" aria-expanded="${open}">${open ? 'Hide details' : 'How I built it'}</button>
+        ${p.link ? `<a class="glink" href="${esc(p.link)}" target="_blank" rel="noopener">View on GitHub →</a>` : ''}
+      </div>
+    </article>`;
+  }).join('');
+}
+$('filters').addEventListener('click', e => { const b = e.target.closest('[data-f]'); if(!b) return; state.filter = b.dataset.f; renderWork(); });
+$('cards').addEventListener('click', e => { const b = e.target.closest('[data-open]'); if(!b) return; state.open = state.open===b.dataset.open ? null : b.dataset.open; renderWork(); });
+
+function renderSkills(){
+  $('skillbtns').innerHTML = SKILLS.map((s,i) =>
+    `<button type="button" class="sbtn press${s.name===state.skill?' on':''}" data-s="${i}" aria-pressed="${s.name===state.skill}">${esc(s.name)}</button>`).join('');
+  const s = SKILLS.find(x => x.name === state.skill);
+  $('slvl').textContent = '// ' + s.level;
+  $('sname').textContent = s.name;
+  $('swhere').textContent = s.where;
+  $('sused').innerHTML = s.used.map(u => `<span>${esc(u)}</span>`).join('');
+}
+$('skillbtns').addEventListener('click', e => { const b = e.target.closest('[data-s]'); if(!b) return; state.skill = SKILLS[+b.dataset.s].name; renderSkills(); });
+
+function renderSteps(){
+  $('steps').innerHTML = STEPS.map((s,i) =>
+    `<button type="button" class="step press${i===state.step?' on':''}" data-st="${i}" aria-pressed="${i===state.step}"><small>${esc(s.n)}</small><strong>${esc(s.title)}</strong><span>${esc(s.place)}</span></button>`).join('');
+  const s = STEPS[state.step];
+  $('stitle').textContent = s.title;
+  $('spoints').innerHTML = s.points.map(p => `<li>${esc(p)}</li>`).join('');
+}
+$('steps').addEventListener('click', e => { const b = e.target.closest('[data-st]'); if(!b) return; state.step = +b.dataset.st; renderSteps(); });
+
+let w = 0;
+if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+  setInterval(() => {
+    const el = $('word'); el.style.opacity = 0;
+    setTimeout(() => { w = (w + 1) % WORDS.length; el.textContent = WORDS[w]; el.style.opacity = 1; }, 200);
+  }, 2200);
+}
+
+renderConsole(false); renderWork(); renderSkills(); renderSteps();
+</script>
+</body>
+</html>
