@@ -144,6 +144,28 @@
   .tbtn{min-height:44px;padding:10px 16px;border-radius:10px;border:1.5px solid var(--ink);background:transparent;color:var(--ink);font:600 14px Inter,sans-serif}
   .glink{display:inline-flex;align-items:center;min-height:44px;padding:0 6px;font-size:14px;font-weight:600;color:var(--accent-text)}
 
+  /* dashboard gallery */
+  .dash{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr));gap:28px;align-items:start}
+  .dash-frame{grid-column:span 2;background:var(--dark);border-radius:20px;overflow:hidden;box-shadow:0 24px 60px rgba(17,20,26,.18)}
+  @media (max-width:700px){.dash-frame{grid-column:auto}}
+  .dash-bar{display:flex;align-items:center;gap:8px;padding:12px 16px;border-bottom:1px solid var(--dark-line);font:500 13px 'JetBrains Mono',monospace;color:#9AA3AE}
+  .dash-bar i{width:11px;height:11px;border-radius:50%;display:block}
+  .dash-bar span{margin-left:8px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+  .dash-img{display:block;width:100%;padding:0;border:0;background:#fff;cursor:zoom-in;position:relative}
+  .dash-img img{display:block;width:100%;height:auto;transition:opacity .25s ease}
+  .dash-img .zoom{position:absolute;right:14px;bottom:14px;display:inline-flex;align-items:center;gap:6px;padding:8px 12px;border-radius:999px;background:rgba(17,20,26,.85);color:#fff;font:600 13px Inter,sans-serif;opacity:0;transition:opacity .2s}
+  .dash-img:hover .zoom,.dash-img:focus-visible .zoom{opacity:1}
+  .dash-notes{display:flex;flex-direction:column;gap:12px}
+  .note{background:#fff;border:1px solid var(--line);border-radius:16px;padding:18px 20px;display:flex;gap:14px;align-items:flex-start;animation:cardIn .45s cubic-bezier(.2,.7,.2,1) both;animation-delay:calc(var(--i,0) * 90ms)}
+  .note b{flex:none;width:32px;height:32px;border-radius:10px;background:var(--accent);display:flex;align-items:center;justify-content:center;font:700 14px 'Space Grotesk',sans-serif}
+  .note p{margin:0;font-size:15px;line-height:1.5;color:var(--body)}
+  .note strong{color:var(--ink)}
+  dialog.lightbox{border:0;padding:0;background:transparent;max-width:min(96vw,1600px);width:100%}
+  dialog.lightbox::backdrop{background:rgba(17,20,26,.82)}
+  dialog.lightbox img{display:block;width:100%;height:auto;border-radius:12px}
+  dialog.lightbox .close{position:absolute;top:10px;right:10px;width:44px;height:44px;border-radius:50%;border:0;background:#11141A;color:#fff;font-size:22px;cursor:pointer}
+  @media (prefers-reduced-motion:reduce){.note{animation:none}.dash-img img{transition:none}}
+
   /* toolbox */
   .tool-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,420px),1fr));gap:28px;align-items:stretch}
   .skills{display:flex;flex-wrap:wrap;align-content:flex-start;gap:10px}
@@ -185,6 +207,7 @@
     <div class="navlinks">
       <a href="#about">About</a>
       <a href="#work">Work</a>
+      <a href="#dashboards">Dashboards</a>
       <a href="#skills">Toolbox</a>
       <a href="#journey">Journey</a>
       <a class="cta press" href="#contact">Let’s talk</a>
@@ -267,10 +290,36 @@
     </div>
   </section>
 
+  <!-- DASHBOARD GALLERY -->
+  <section id="dashboards" class="wrap section">
+    <div class="work-head reveal">
+      <div class="stack">
+        <span class="label">02 / INSIDE THE DASHBOARD</span>
+        <h2 class="h2">Real Power BI work, not mockups</h2>
+      </div>
+      <div class="filters" id="dashtabs" role="tablist" aria-label="Dashboard pages"></div>
+    </div>
+    <div class="dash reveal" style="--d:.1s">
+      <div class="dash-frame">
+        <div class="dash-bar"><i aria-hidden="true" style="background:#FF6159"></i><i aria-hidden="true" style="background:#FFBD2E"></i><i aria-hidden="true" style="background:#28C840"></i><span id="dashtitle"></span></div>
+        <button type="button" class="dash-img" id="dashopen" aria-label="Enlarge dashboard screenshot">
+          <img id="dashimg" src="images/dashboard-overview.jpg" alt="" width="1404" height="786">
+          <span class="zoom" aria-hidden="true"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3M11 8v6M8 11h6"/></svg>Click to enlarge</span>
+        </button>
+      </div>
+      <div class="dash-notes" id="dashnotes" aria-live="polite"></div>
+    </div>
+  </section>
+
+  <dialog class="lightbox" id="lightbox" aria-label="Dashboard screenshot, enlarged">
+    <img id="lbimg" src="images/dashboard-overview.jpg" alt="">
+    <button type="button" class="close" id="lbclose" aria-label="Close">×</button>
+  </dialog>
+
   <!-- TOOLBOX -->
   <section id="skills" class="wrap section">
     <div class="stack reveal">
-      <span class="label">02 / TOOLBOX</span>
+      <span class="label">03 / TOOLBOX</span>
       <h2 class="h2">Pick a tool, see where I’ve used it</h2>
     </div>
     <div class="tool-grid reveal" style="--d:.1s">
@@ -288,7 +337,7 @@
   <section id="journey">
     <div class="wrap section">
       <div class="stack reveal">
-        <span class="label">03 / JOURNEY</span>
+        <span class="label">04 / JOURNEY</span>
         <h2 class="h2">From engineering to analytics</h2>
       </div>
       <div class="steps reveal" style="--d:.1s" id="steps"></div>
@@ -302,7 +351,7 @@
   <!-- CONTACT -->
   <section id="contact" class="wrap contact">
     <div class="contact-box reveal">
-      <span class="mono" style="font-size:14px;font-weight:600">04 / CONTACT</span>
+      <span class="mono" style="font-size:14px;font-weight:600">05 / CONTACT</span>
       <h2>Got data and a decision to make? Let’s talk.</h2>
       <p>Based in West Haven, CT. Open to Business Analyst, operations and analytics roles.</p>
       <div class="row">
@@ -341,9 +390,9 @@ const PROJECTS = [
     link:'' /* TODO: paste the Port Authority GitHub repo URL here */ },
   { id:'ecom', num:'02', kind:'End-to-end portfolio build', title:'E-commerce Analytics', tags:['SQL','Python','Power BI'],
     summary:'Designed a star-schema warehouse in SQL Server, generated realistic multi-year sales with Python, and built a two-page Power BI dashboard on top.',
-    metrics:[['$4.15M','total revenue'],['~7K','orders'],['300','customers'],['50','products']],
+    metrics:[['$4.15M','total revenue'],['$1.61M','profit (~39% margin)'],['~7K','orders'],['$638','avg order value']],
     details:['Fact and dimension tables for sales, inventory, products, customers, suppliers and dates','Python (pyodbc + Faker) to populate data with Nov/Dec seasonal peaks','DAX measures: revenue, profit, orders and average order value','Geography page with a US revenue map and top-10 customers'],
-    link:'https://github.com/AnilkumarSowrav/Ecommerce-Analytics' },
+    link:'https://github.com/AnilkumarSowrav/Ecommerce-Analytics', dash:true },
   { id:'var', num:'03', kind:'Dell Technologies', title:'Macroeconomic Forecasting', tags:['R'],
     summary:'Built VAR (vector autoregression) macroeconomic forecasting models in R as part of the Business Operations & Global BI team.',
     metrics:[],
@@ -369,6 +418,23 @@ const STEPS = [
   { n:'STEP 02', title:'Dell Technologies', place:'Bengaluru · ~2.5 years', points:['Senior Representative, Business Operations & Global BI','Supported $450M+ deal portfolios across AMER, EMEA and APJ','Built VAR-based macroeconomic forecasts in R','Tracked projects in Smartsheet'] },
   { n:'STEP 03', title:'M.S. Business Analytics', place:'University of New Haven · GPA 3.74', points:['Graduate degree in Business Analytics','Flagship project: Port Authority NY/NJ bridge & tunnel traffic analysis','Hands-on with SQL, Power BI, Python, R and Azure AutoML'] },
   { n:'NEXT', title:'Your team?', place:'West Haven, CT', points:['Looking for Business Analyst, operations and analytics roles','Bringing global BI experience plus a modern analytics toolkit'] }
+];
+
+const DASHBOARDS = [
+  { tab:'Overview', title:'E-commerce Analytics · Page 1 — Overview', img:'images/dashboard-overview.jpg',
+    alt:'Power BI overview page: KPI cards for $4.15M revenue, 7K orders, $1.61M profit and $638.22 average order value, a monthly revenue trend line for 2024–2026 and a revenue-by-category bar chart.',
+    notes:[
+      '<strong>Four KPI cards</strong> built with DAX measures: $4.15M revenue, 7K orders, $1.61M profit, $638 average order value.',
+      '<strong>Holiday seasonality</strong> jumps out of the monthly trend: revenue peaks every November–December and dips in January.',
+      '<strong>Footwear leads</strong> every category at $1.05M, with Books and Home Appliances close behind.'
+    ] },
+  { tab:'Customers & Geography', title:'E-commerce Analytics · Page 2 — Customers & Geography', img:'images/dashboard-geography.jpg',
+    alt:'Power BI customers and geography page: KPI cards, a filled US map of revenue by state and a table of the top 10 customers by revenue.',
+    notes:[
+      '<strong>Filled map</strong> of revenue by US state, driven by the customer geography dimension.',
+      '<strong>Top-10 customers</strong> table, ranked by revenue, totals $262K, about 6% of all revenue.',
+      '<strong>KPI cards carry across pages</strong>, so every view keeps the headline numbers in context.'
+    ] }
 ];
 
 const WORDS = ['messy spreadsheets','deal pipelines','raw sales data','traffic counts'];
@@ -427,6 +493,7 @@ function renderWork(){
       ${open ? `<ul class="details">${p.details.map(d => `<li>${esc(d)}</li>`).join('')}</ul>` : ''}
       <div class="row" style="gap:10px;align-items:center">
         <button type="button" class="tbtn press" data-open="${p.id}" aria-expanded="${open}">${open ? 'Hide details' : 'How I built it'}</button>
+        ${p.dash ? `<a class="glink" href="#dashboards">See the dashboard ↓</a>` : ''}
         ${p.link ? `<a class="glink" href="${esc(p.link)}" target="_blank" rel="noopener">View on GitHub →</a>` : ''}
       </div>
     </article>`;
@@ -454,6 +521,30 @@ function renderSteps(){
   $('spoints').innerHTML = s.points.map(p => `<li>${esc(p)}</li>`).join('');
 }
 $('steps').addEventListener('click', e => { const b = e.target.closest('[data-st]'); if(!b) return; state.step = +b.dataset.st; renderSteps(); });
+
+let dashIdx = 0;
+function renderDash(){
+  const d = DASHBOARDS[dashIdx];
+  $('dashtabs').innerHTML = DASHBOARDS.map((x,i) =>
+    `<button type="button" class="fbtn press${i===dashIdx?' on':''}" role="tab" aria-selected="${i===dashIdx}" data-dash="${i}">${esc(x.tab)}</button>`).join('');
+  $('dashtitle').textContent = d.title;
+  const img = $('dashimg');
+  if (img.getAttribute('src') !== d.img) {
+    img.style.opacity = 0;
+    const next = new Image(); next.src = d.img;
+    next.onload = () => { img.src = d.img; img.style.opacity = 1; };
+  }
+  img.alt = d.alt;
+  $('dashnotes').innerHTML = d.notes.map((n,i) => `<div class="note" style="--i:${i}"><b>${i+1}</b><p>${n}</p></div>`).join('');
+}
+$('dashtabs').addEventListener('click', e => { const b = e.target.closest('[data-dash]'); if(!b) return; dashIdx = +b.dataset.dash; renderDash(); });
+$('dashopen').addEventListener('click', () => {
+  const d = DASHBOARDS[dashIdx]; $('lbimg').src = d.img; $('lbimg').alt = d.alt;
+  $('lightbox').showModal();
+});
+$('lbclose').addEventListener('click', () => $('lightbox').close());
+$('lightbox').addEventListener('click', e => { if (e.target === $('lightbox')) $('lightbox').close(); });
+renderDash();
 
 let w = 0;
 if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
