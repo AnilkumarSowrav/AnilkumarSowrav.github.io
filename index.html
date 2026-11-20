@@ -303,7 +303,7 @@
       <div class="dash-frame">
         <div class="dash-bar"><i aria-hidden="true" style="background:#FF6159"></i><i aria-hidden="true" style="background:#FFBD2E"></i><i aria-hidden="true" style="background:#28C840"></i><span id="dashtitle"></span></div>
         <button type="button" class="dash-img" id="dashopen" aria-label="Enlarge dashboard screenshot">
-          <img id="dashimg" src="images/dashboard-overview.jpg" alt="" width="1404" height="786">
+          <img id="dashimg" src="images/supply-chain-inventory.jpg" alt="" width="1404" height="786">
           <span class="zoom" aria-hidden="true"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3M11 8v6M8 11h6"/></svg>Click to enlarge</span>
         </button>
       </div>
@@ -312,7 +312,7 @@
   </section>
 
   <dialog class="lightbox" id="lightbox" aria-label="Dashboard screenshot, enlarged">
-    <img id="lbimg" src="images/dashboard-overview.jpg" alt="">
+    <img id="lbimg" src="images/supply-chain-inventory.jpg" alt="">
     <button type="button" class="close" id="lbclose" aria-label="Close">×</button>
   </dialog>
 
@@ -388,29 +388,34 @@ const PROJECTS = [
     metrics:[],
     details:['Machine-learning models built and compared in Azure AutoML','Python for data preparation and analysis','Power BI dashboard with the data embedded','Full report and project resources documented on GitHub'],
     link:'' /* TODO: paste the Port Authority GitHub repo URL here */ },
-  { id:'ecom', num:'02', kind:'End-to-end portfolio build', title:'E-commerce Analytics', tags:['SQL','Python','Power BI'],
+  { id:'supply', num:'02', kind:'Real-data business case', title:'Supply Chain Inventory Optimization', tags:['SQL','Python','Power BI','Excel'],
+    summary:'Took 180K real DataCo order lines, set a data-driven stock policy for every product, and traced why 57% of deliveries arrive late, with a dollar value on each fix.',
+    metrics:[['−80%','avg inventory ($925K → $184K)'],['$188K','inventory cost saved / year'],['12%','late deliveries (from 57%)'],['99.99%','back-tested fill rate']],
+    details:['ABC-XYZ segmentation: 7 of 100 products drive 82% of revenue, all with stable demand','Safety stock, reorder points and EOQ per product, replayed week by week on real demand','Root cause: First Class promises 1 day but always takes 2; Second Class ships at Standard speed','SQL Server window-function queries, Excel what-if model and a 2-page Power BI dashboard'],
+    link:'https://github.com/AnilkumarSowrav/Supply-Chain-Inventory-Optimization', dash:true },
+  { id:'ecom', num:'03', kind:'End-to-end portfolio build', title:'E-commerce Analytics', tags:['SQL','Python','Power BI'],
     summary:'Designed a star-schema warehouse in SQL Server, generated realistic multi-year sales with Python, and built a two-page Power BI dashboard on top.',
     metrics:[['$4.15M','total revenue'],['$1.61M','profit (~39% margin)'],['~7K','orders'],['$638','avg order value']],
     details:['Fact and dimension tables for sales, inventory, products, customers, suppliers and dates','Python (pyodbc + Faker) to populate data with Nov/Dec seasonal peaks','DAX measures: revenue, profit, orders and average order value','Geography page with a US revenue map and top-10 customers'],
     link:'https://github.com/AnilkumarSowrav/Ecommerce-Analytics', dash:true },
-  { id:'var', num:'03', kind:'Dell Technologies', title:'Macroeconomic Forecasting', tags:['R'],
+  { id:'var', num:'04', kind:'Dell Technologies', title:'Macroeconomic Forecasting', tags:['R'],
     summary:'Built VAR (vector autoregression) macroeconomic forecasting models in R as part of the Business Operations & Global BI team.',
     metrics:[],
     details:['Vector autoregression models in R','Delivered within Dell’s Business Operations & Global BI function'],
     link:'' }
 ];
-const FILTERS = ['All','SQL','Python','Power BI','Azure ML','R'];
+const FILTERS = ['All','SQL','Python','Power BI','Excel','Azure ML','R'];
 
 const SKILLS = [
-  { name:'SQL', level:'daily driver', where:'Built a star-schema warehouse in SQL Server and wrote the joins, aggregates and HAVING queries behind my e-commerce analysis.', used:['E-commerce Analytics','Dell Global BI'] },
-  { name:'Power BI & DAX', level:'daily driver', where:'Dashboards with KPI cards, trend lines and geographic maps; DAX measures for revenue, profit, orders and average order value.', used:['E-commerce Analytics','Port Authority'] },
-  { name:'Python', level:'go-to for data work', where:'Generated and loaded realistic data with pyodbc and Faker; analysis in Jupyter notebooks.', used:['E-commerce Analytics','Port Authority'] },
+  { name:'SQL', level:'daily driver', where:'Built a star-schema warehouse in SQL Server and wrote the joins, aggregates and HAVING queries behind my e-commerce analysis.', used:['Supply Chain Optimization','E-commerce Analytics','Dell Global BI'] },
+  { name:'Power BI & DAX', level:'daily driver', where:'Dashboards with KPI cards, trend lines and geographic maps; DAX measures for revenue, profit, orders and average order value.', used:['Supply Chain Optimization','E-commerce Analytics','Port Authority'] },
+  { name:'Python', level:'go-to for data work', where:'Generated and loaded realistic data with pyodbc and Faker; analysis in Jupyter notebooks, including inventory simulation and scenario testing.', used:['Supply Chain Optimization','E-commerce Analytics','Port Authority'] },
   { name:'Azure AutoML', level:'machine learning', where:'Trained and compared models for bridge and tunnel traffic analysis.', used:['Port Authority'] },
   { name:'R', level:'forecasting', where:'VAR-based macroeconomic forecasting during my time at Dell.', used:['Dell Global BI'] },
-  { name:'Excel', level:'everyday analysis', where:'Quick analysis, reconciliation and reporting across business operations.', used:['Dell Business Ops'] },
+  { name:'Excel', level:'everyday analysis', where:'Built a formula-driven what-if model for safety stock, reorder points and EOQ; plus everyday analysis and reporting.', used:['Supply Chain Optimization','Dell Business Ops'] },
   { name:'Smartsheet', level:'project tracking', where:'Tracked projects and deliverables for Dell’s Business Operations team.', used:['Dell Business Ops'] },
   { name:'Git & GitHub', level:'version control', where:'Every portfolio project is versioned and published with a README, screenshots and SQL scripts.', used:['E-commerce Analytics','Port Authority'] },
-  { name:'Lean Six Sigma', level:'process improvement', where:'Coursework in Lean Six Sigma methods for finding and fixing process bottlenecks.', used:['Operations'] }
+  { name:'Lean Six Sigma', level:'process improvement', where:'Coursework in Lean Six Sigma methods for finding and fixing process bottlenecks.', used:['Supply Chain Optimization','Operations'] }
 ];
 
 const STEPS = [
@@ -421,14 +426,28 @@ const STEPS = [
 ];
 
 const DASHBOARDS = [
-  { tab:'Overview', title:'E-commerce Analytics · Page 1 — Overview', img:'images/dashboard-overview.jpg',
+  { tab:'Inventory policy', title:'Supply Chain Optimization · Page 1 — Inventory policy', img:'images/supply-chain-inventory.jpg',
+    alt:'Power BI inventory page: KPI cards showing average inventory falling from $925K to $184K (−80%) and $188K annual saving, a bar chart of inventory by ABC class, and a per-product table of safety stock, reorder point, order quantity and fill rate.',
+    notes:[
+      '<strong>Blanket rule vs ABC-XYZ policy:</strong> average inventory drops from $925K to $184K, saving $188K a year.',
+      '<strong>Class A carries the savings:</strong> stable demand means far less buffer stock is needed than a 4-week rule holds.',
+      '<strong>Per-product policy table</strong> with safety stock, reorder point, EOQ and a back-tested fill rate of ~100%.'
+    ] },
+  { tab:'Delivery performance', title:'Supply Chain Optimization · Page 2 — Delivery performance', img:'images/supply-chain-delivery.jpg',
+    alt:'Power BI delivery page: KPI cards for a 57.3% late rate, 19.8% and 12.0% under two scenarios, $20.1M revenue delivered late, a late-rate-by-shipping-mode bar chart and a promised vs actual shipping days column chart.',
+    notes:[
+      '<strong>57% of shipments arrive late</strong>, and the promise is the problem, not the warehouse.',
+      '<strong>First Class</strong> promises 1 day and always takes 2; <strong>Second Class</strong> averages 4 days against a 2-day promise.',
+      '<strong>Two scenarios</strong> cut late deliveries to 20% (honest promises) and 12% (reroute Second Class).'
+    ] },
+  { tab:'E-commerce overview', title:'E-commerce Analytics · Page 1 — Overview', img:'images/dashboard-overview.jpg',
     alt:'Power BI overview page: KPI cards for $4.15M revenue, 7K orders, $1.61M profit and $638.22 average order value, a monthly revenue trend line for 2024–2026 and a revenue-by-category bar chart.',
     notes:[
       '<strong>Four KPI cards</strong> built with DAX measures: $4.15M revenue, 7K orders, $1.61M profit, $638 average order value.',
       '<strong>Holiday seasonality</strong> jumps out of the monthly trend: revenue peaks every November–December and dips in January.',
       '<strong>Footwear leads</strong> every category at $1.05M, with Books and Home Appliances close behind.'
     ] },
-  { tab:'Customers & Geography', title:'E-commerce Analytics · Page 2 — Customers & Geography', img:'images/dashboard-geography.jpg',
+  { tab:'E-commerce geography', title:'E-commerce Analytics · Page 2 — Customers & Geography', img:'images/dashboard-geography.jpg',
     alt:'Power BI customers and geography page: KPI cards, a filled US map of revenue by state and a table of the top 10 customers by revenue.',
     notes:[
       '<strong>Filled map</strong> of revenue by US state, driven by the customer geography dimension.',
