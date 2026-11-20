@@ -145,6 +145,12 @@
   .glink{display:inline-flex;align-items:center;min-height:44px;padding:0 6px;font-size:14px;font-weight:600;color:var(--accent-text)}
 
   /* dashboard gallery */
+  .dash-pick{display:flex;flex-direction:column;gap:12px;margin-top:28px}
+  .dash-pick .row2{display:flex;flex-wrap:wrap;align-items:center;gap:12px}
+  .dash-pick .k{width:72px;font:600 12px 'JetBrains Mono',monospace;letter-spacing:.06em;color:var(--muted,#5b6470)}
+  .dash-proj{display:flex;flex-wrap:wrap;align-items:baseline;justify-content:space-between;gap:8px 20px;margin:24px 0 16px;padding:16px 20px;border:1.5px solid var(--line-2);border-radius:16px;background:#fff}
+  .dash-proj h3{margin:0;font-size:20px}
+  .dash-proj p{margin:4px 0 0;font-size:15px;color:var(--muted,#5b6470)}
   .dash{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr));gap:28px;align-items:start}
   .dash-frame{grid-column:span 2;background:var(--dark);border-radius:20px;overflow:hidden;box-shadow:0 24px 60px rgba(17,20,26,.18)}
   @media (max-width:700px){.dash-frame{grid-column:auto}}
@@ -297,8 +303,12 @@
         <span class="label">02 / INSIDE THE DASHBOARD</span>
         <h2 class="h2">Real Power BI work, not mockups</h2>
       </div>
-      <div class="filters" id="dashtabs" role="tablist" aria-label="Dashboard pages"></div>
     </div>
+    <div class="dash-pick reveal">
+      <div class="row2"><span class="k">PROJECT</span><div class="filters" id="dashproj" role="tablist" aria-label="Choose a project"></div></div>
+      <div class="row2"><span class="k">PAGE</span><div class="filters" id="dashtabs" role="tablist" aria-label="Dashboard pages"></div></div>
+    </div>
+    <div class="dash-proj" id="dashproject" aria-live="polite"></div>
     <div class="dash reveal" style="--d:.1s">
       <div class="dash-frame">
         <div class="dash-bar"><i aria-hidden="true" style="background:#FF6159"></i><i aria-hidden="true" style="background:#FFBD2E"></i><i aria-hidden="true" style="background:#28C840"></i><span id="dashtitle"></span></div>
@@ -425,29 +435,33 @@ const STEPS = [
   { n:'NEXT', title:'Your team?', place:'West Haven, CT', points:['Looking for Business Analyst, operations and analytics roles','Bringing global BI experience plus a modern analytics toolkit'] }
 ];
 
+const DASH_PROJECTS = [
+  { id:'supply', name:'Supply Chain Inventory Optimization', blurb:'Inventory policy and late-delivery root cause on 180K real DataCo order lines.', link:'https://github.com/AnilkumarSowrav/Supply-Chain-Inventory-Optimization' },
+  { id:'ecom', name:'E-commerce Analytics', blurb:'SQL Server star schema, Python-generated sales and a two-page Power BI report.', link:'https://github.com/AnilkumarSowrav/Ecommerce-Analytics' }
+];
 const DASHBOARDS = [
-  { tab:'Inventory policy', title:'Supply Chain Optimization · Page 1 — Inventory policy', img:'images/supply-chain-inventory.jpg',
+  { project:'supply', tab:'Inventory policy', title:'Supply Chain Inventory Optimization · Page 1 of 2 · Inventory policy', img:'images/supply-chain-inventory.jpg',
     alt:'Power BI inventory page: KPI cards showing average inventory falling from $925K to $184K (−80%) and $188K annual saving, a bar chart of inventory by ABC class, and a per-product table of safety stock, reorder point, order quantity and fill rate.',
     notes:[
       '<strong>Blanket rule vs ABC-XYZ policy:</strong> average inventory drops from $925K to $184K, saving $188K a year.',
       '<strong>Class A carries the savings:</strong> stable demand means far less buffer stock is needed than a 4-week rule holds.',
       '<strong>Per-product policy table</strong> with safety stock, reorder point, EOQ and a back-tested fill rate of ~100%.'
     ] },
-  { tab:'Delivery performance', title:'Supply Chain Optimization · Page 2 — Delivery performance', img:'images/supply-chain-delivery.jpg',
+  { project:'supply', tab:'Delivery performance', title:'Supply Chain Inventory Optimization · Page 2 of 2 · Delivery performance', img:'images/supply-chain-delivery.jpg',
     alt:'Power BI delivery page: KPI cards for a 57.3% late rate, 19.8% and 12.0% under two scenarios, $20.1M revenue delivered late, a late-rate-by-shipping-mode bar chart and a promised vs actual shipping days column chart.',
     notes:[
       '<strong>57% of shipments arrive late</strong>, and the promise is the problem, not the warehouse.',
       '<strong>First Class</strong> promises 1 day and always takes 2; <strong>Second Class</strong> averages 4 days against a 2-day promise.',
       '<strong>Two scenarios</strong> cut late deliveries to 20% (honest promises) and 12% (reroute Second Class).'
     ] },
-  { tab:'E-commerce overview', title:'E-commerce Analytics · Page 1 — Overview', img:'images/dashboard-overview.jpg',
+  { project:'ecom', tab:'Overview', title:'E-commerce Analytics · Page 1 of 2 · Overview', img:'images/dashboard-overview.jpg',
     alt:'Power BI overview page: KPI cards for $4.15M revenue, 7K orders, $1.61M profit and $638.22 average order value, a monthly revenue trend line for 2024–2026 and a revenue-by-category bar chart.',
     notes:[
       '<strong>Four KPI cards</strong> built with DAX measures: $4.15M revenue, 7K orders, $1.61M profit, $638 average order value.',
       '<strong>Holiday seasonality</strong> jumps out of the monthly trend: revenue peaks every November–December and dips in January.',
       '<strong>Footwear leads</strong> every category at $1.05M, with Books and Home Appliances close behind.'
     ] },
-  { tab:'E-commerce geography', title:'E-commerce Analytics · Page 2 — Customers & Geography', img:'images/dashboard-geography.jpg',
+  { project:'ecom', tab:'Customers & Geography', title:'E-commerce Analytics · Page 2 of 2 · Customers & Geography', img:'images/dashboard-geography.jpg',
     alt:'Power BI customers and geography page: KPI cards, a filled US map of revenue by state and a table of the top 10 customers by revenue.',
     notes:[
       '<strong>Filled map</strong> of revenue by US state, driven by the customer geography dimension.',
@@ -512,7 +526,7 @@ function renderWork(){
       ${open ? `<ul class="details">${p.details.map(d => `<li>${esc(d)}</li>`).join('')}</ul>` : ''}
       <div class="row" style="gap:10px;align-items:center">
         <button type="button" class="tbtn press" data-open="${p.id}" aria-expanded="${open}">${open ? 'Hide details' : 'How I built it'}</button>
-        ${p.dash ? `<a class="glink" href="#dashboards">See the dashboard ↓</a>` : ''}
+        ${p.dash ? `<a class="glink" href="#dashboards" data-dashproj="${p.id}">See the dashboard ↓</a>` : ''}
         ${p.link ? `<a class="glink" href="${esc(p.link)}" target="_blank" rel="noopener" data-track="repo-${p.id}">View on GitHub →</a>` : ''}
       </div>
     </article>`;
@@ -544,8 +558,12 @@ $('steps').addEventListener('click', e => { const b = e.target.closest('[data-st
 let dashIdx = 0;
 function renderDash(){
   const d = DASHBOARDS[dashIdx];
-  $('dashtabs').innerHTML = DASHBOARDS.map((x,i) =>
+  const proj = DASH_PROJECTS.find(p => p.id === d.project);
+  $('dashproj').innerHTML = DASH_PROJECTS.map(p =>
+    `<button type="button" class="fbtn press${p.id===d.project?' on':''}" role="tab" aria-selected="${p.id===d.project}" data-proj="${p.id}">${esc(p.name)}</button>`).join('');
+  $('dashtabs').innerHTML = DASHBOARDS.map((x,i) => x.project !== d.project ? '' :
     `<button type="button" class="fbtn press${i===dashIdx?' on':''}" role="tab" aria-selected="${i===dashIdx}" data-dash="${i}">${esc(x.tab)}</button>`).join('');
+  $('dashproject').innerHTML = `<div><h3>${esc(proj.name)}</h3><p>${esc(proj.blurb)}</p></div><a class="glink" href="${esc(proj.link)}" target="_blank" rel="noopener" data-track="dash-repo-${proj.id}">View this project on GitHub →</a>`;
   $('dashtitle').textContent = d.title;
   const img = $('dashimg');
   if (img.getAttribute('src') !== d.img) {
@@ -556,6 +574,9 @@ function renderDash(){
   img.alt = d.alt;
   $('dashnotes').innerHTML = d.notes.map((n,i) => `<div class="note" style="--i:${i}"><b>${i+1}</b><p>${n}</p></div>`).join('');
 }
+function showProject(id){ dashIdx = DASHBOARDS.findIndex(x => x.project === id); renderDash(); }
+$('dashproj').addEventListener('click', e => { const b = e.target.closest('[data-proj]'); if(!b) return; showProject(b.dataset.proj); });
+$('cards').addEventListener('click', e => { const a = e.target.closest('[data-dashproj]'); if(a) showProject(a.dataset.dashproj); });
 $('dashtabs').addEventListener('click', e => { const b = e.target.closest('[data-dash]'); if(!b) return; dashIdx = +b.dataset.dash; renderDash(); });
 $('dashopen').addEventListener('click', () => {
   const d = DASHBOARDS[dashIdx]; $('lbimg').src = d.img; $('lbimg').alt = d.alt;
@@ -570,7 +591,7 @@ document.addEventListener('click', e => {
   const a = e.target.closest('[data-track]'); if (!a) return;
   if (window.goatcounter && window.goatcounter.count) window.goatcounter.count({ path: 'click-' + a.dataset.track, title: a.textContent.trim(), event: true });
 });
-const lbOpen = $('dashopen'); lbOpen.addEventListener('click', () => { if (window.goatcounter && window.goatcounter.count) window.goatcounter.count({ path: 'view-dashboard-' + DASHBOARDS[dashIdx].tab, event: true }); });
+const lbOpen = $('dashopen'); lbOpen.addEventListener('click', () => { if (window.goatcounter && window.goatcounter.count) window.goatcounter.count({ path: 'view-dashboard-' + DASHBOARDS[dashIdx].project + '-' + DASHBOARDS[dashIdx].tab, event: true }); });
 
 let w = 0;
 if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
