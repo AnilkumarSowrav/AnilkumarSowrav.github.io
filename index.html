@@ -299,7 +299,55 @@
         </div>
         <div class="filters" id="filters" role="group" aria-label="Filter projects by tool"></div>
       </div>
-      <div class="cards" id="cards"></div>
+      <div class="cards" id="cards"><article class="card lift" style="--i:0">
+      <div class="card-top"><span>Master's flagship project</span><span class="num">01</span></div>
+      <h3>Port Authority NY/NJ Traffic Analysis</h3>
+      <p>Analyzed bridge and tunnel traffic for the Port Authority of New York &amp; New Jersey, pairing Azure AutoML models with an interactive Power BI dashboard.</p>
+      
+      <div class="tags"><span class="tag">Python</span><span class="tag">Power BI</span><span class="tag">Azure ML</span></div>
+      
+      <div class="row" style="gap:10px;align-items:center">
+        <button type="button" class="tbtn press" data-open="port" aria-expanded="false">How I built it</button>
+        
+        
+      </div>
+    </article><article class="card lift" style="--i:1">
+      <div class="card-top"><span>Real-data business case</span><span class="num">02</span></div>
+      <h3>Supply Chain Inventory Optimization</h3>
+      <p>Took 180K real DataCo order lines, set a data-driven stock policy for every product, and traced why 57% of deliveries arrive late, with a dollar value on each fix.</p>
+      <div class="metrics"><div class="metric"><b>−80%</b><span>avg inventory ($925K → $184K)</span></div><div class="metric"><b>$188K</b><span>inventory cost saved / year</span></div><div class="metric"><b>12%</b><span>late deliveries (from 57%)</span></div><div class="metric"><b>99.99%</b><span>back-tested fill rate</span></div></div>
+      <div class="tags"><span class="tag">SQL</span><span class="tag">Python</span><span class="tag">Power BI</span><span class="tag">Excel</span></div>
+      
+      <div class="row" style="gap:10px;align-items:center">
+        <button type="button" class="tbtn press" data-open="supply" aria-expanded="false">How I built it</button>
+        <a class="glink" href="#dashboards" data-dashproj="supply">See the dashboard ↓</a>
+        <a class="glink" href="https://github.com/AnilkumarSowrav/Supply-Chain-Inventory-Optimization" target="_blank" rel="noopener" data-track="repo-supply">View on GitHub →</a>
+      </div>
+    </article><article class="card lift" style="--i:2">
+      <div class="card-top"><span>End-to-end portfolio build</span><span class="num">03</span></div>
+      <h3>E-commerce Analytics</h3>
+      <p>Designed a star-schema warehouse in SQL Server, generated realistic multi-year sales with Python, and built a two-page Power BI dashboard on top.</p>
+      <div class="metrics"><div class="metric"><b>$4.15M</b><span>total revenue</span></div><div class="metric"><b>$1.61M</b><span>profit (~39% margin)</span></div><div class="metric"><b>~7K</b><span>orders</span></div><div class="metric"><b>$638</b><span>avg order value</span></div></div>
+      <div class="tags"><span class="tag">SQL</span><span class="tag">Python</span><span class="tag">Power BI</span></div>
+      
+      <div class="row" style="gap:10px;align-items:center">
+        <button type="button" class="tbtn press" data-open="ecom" aria-expanded="false">How I built it</button>
+        <a class="glink" href="#dashboards" data-dashproj="ecom">See the dashboard ↓</a>
+        <a class="glink" href="https://github.com/AnilkumarSowrav/Ecommerce-Analytics" target="_blank" rel="noopener" data-track="repo-ecom">View on GitHub →</a>
+      </div>
+    </article><article class="card lift" style="--i:3">
+      <div class="card-top"><span>Dell Technologies</span><span class="num">04</span></div>
+      <h3>Macroeconomic Forecasting</h3>
+      <p>Built VAR (vector autoregression) macroeconomic forecasting models in R as part of the Business Operations &amp; Global BI team.</p>
+      
+      <div class="tags"><span class="tag">R</span></div>
+      
+      <div class="row" style="gap:10px;align-items:center">
+        <button type="button" class="tbtn press" data-open="var" aria-expanded="false">How I built it</button>
+        
+        
+      </div>
+    </article></div>
     </div>
   </section>
 
@@ -315,10 +363,10 @@
       <div class="row2"><span class="k">PROJECT</span><div class="filters" id="dashproj" role="tablist" aria-label="Choose a project"></div></div>
       <div class="row2"><span class="k">PAGE</span><div class="filters" id="dashtabs" role="tablist" aria-label="Dashboard pages"></div></div>
     </div>
-    <div class="dash-proj" id="dashproject" aria-live="polite"></div>
+    <div class="dash-proj" id="dashproject" aria-live="polite"><div><h3>Supply Chain Inventory Optimization</h3><p>Inventory policy and late-delivery root cause on 180K real DataCo order lines.</p></div><a class="glink" href="https://github.com/AnilkumarSowrav/Supply-Chain-Inventory-Optimization" target="_blank" rel="noopener" data-track="dash-repo-supply">View this project on GitHub →</a></div>
     <div class="dash reveal" style="--d:.1s">
       <div class="dash-frame">
-        <div class="dash-bar"><i aria-hidden="true" style="background:#FF6159"></i><i aria-hidden="true" style="background:#FFBD2E"></i><i aria-hidden="true" style="background:#28C840"></i><span id="dashtitle"></span></div>
+        <div class="dash-bar"><i aria-hidden="true" style="background:#FF6159"></i><i aria-hidden="true" style="background:#FFBD2E"></i><i aria-hidden="true" style="background:#28C840"></i><span id="dashtitle">Supply Chain Inventory Optimization · Page 1 of 2 · Inventory policy</span></div>
         <button type="button" class="dash-img" id="dashopen" aria-label="Enlarge dashboard screenshot">
           <img id="dashimg" src="images/supply-chain-inventory.jpg" alt="" width="1404" height="786">
           <span class="zoom" aria-hidden="true"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3M11 8v6M8 11h6"/></svg>Click to enlarge</span>
