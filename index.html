@@ -141,6 +141,13 @@
   .card-top{display:flex;align-items:center;justify-content:space-between;gap:12px}
   .card-top span:first-child{font-family:'JetBrains Mono',monospace;font-size:13px;color:var(--muted)}
   .num{width:44px;height:44px;border-radius:12px;display:flex;align-items:center;justify-content:center;font:700 15px 'Fraunces',Georgia,serif;background:var(--accent);color:var(--on-accent)}
+  .thumb{display:block;position:relative;margin:-28px -28px 4px;aspect-ratio:16/9;overflow:hidden;border-radius:19px 19px 0 0;border-bottom:1px solid var(--line);text-decoration:none}
+  .thumb .tlabel{position:absolute;left:12px;bottom:12px;display:inline-flex;align-items:center;gap:6px;padding:6px 11px;border-radius:999px;background:rgba(10,14,20,.86);color:#fff;font:600 12px Inter,sans-serif;opacity:0;transform:translateY(4px);transition:opacity .2s,transform .2s}
+  .card:hover .thumb .tlabel,.thumb:focus-visible .tlabel{opacity:1;transform:none}
+  .thumb.art{display:flex;align-items:center;justify-content:center;background-color:var(--tint);background-image:radial-gradient(420px 220px at 50% 110%,rgba(159,29,53,.45),transparent 70%),linear-gradient(var(--line) 1px,transparent 1px),linear-gradient(90deg,var(--line) 1px,transparent 1px);background-size:auto,26px 26px,26px 26px}
+  .thumb.art svg{width:70%;height:auto;color:var(--accent-text);transition:transform .6s cubic-bezier(.2,.7,.2,1)}
+  .card:hover .thumb.art svg{transform:scale(1.05)}
+  @media (prefers-reduced-motion:reduce){.thumb.art svg,.thumb .tlabel{transition:none}}
   .card h3{font-size:26px;line-height:1.15;letter-spacing:-.01em}
   .card p{margin:0;font-size:16px;line-height:1.55;color:var(--body)}
   .metrics{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
@@ -448,27 +455,33 @@ const QUERIES = [
 ];
 
 const PROJECTS = [
-  { id:'port', num:'01', kind:"Master's flagship project", title:'Port Authority NY/NJ Traffic Analysis', tags:['Python','Power BI','Azure ML'],
+  { id:'port', thumb:{art:'bridge'}, num:'01', kind:"Master's flagship project", title:'Port Authority NY/NJ Traffic Analysis', tags:['Python','Power BI','Azure ML'],
     summary:'Analyzed bridge and tunnel traffic for the Port Authority of New York & New Jersey, pairing Azure AutoML models with an interactive Power BI dashboard.',
     metrics:[],
     details:['Machine-learning models built and compared in Azure AutoML','Python for data preparation and analysis','Power BI dashboard with the data embedded','Full report and project resources documented on GitHub'],
     link:'' /* TODO: paste the Port Authority GitHub repo URL here */ },
-  { id:'supply', num:'02', kind:'Real-data business case', title:'Supply Chain Inventory Optimization', tags:['SQL','Python','Power BI','Excel'],
+  { id:'supply', thumb:{art:'inventory'}, num:'02', kind:'Real-data business case', title:'Supply Chain Inventory Optimization', tags:['SQL','Python','Power BI','Excel'],
     summary:'Took 180K real DataCo order lines, set a data-driven stock policy for every product, and traced why 57% of deliveries arrive late, with a dollar value on each fix.',
     metrics:[['−80%','avg inventory ($925K → $184K)'],['$188K','inventory cost saved / year'],['12%','late deliveries (from 57%)'],['99.99%','back-tested fill rate']],
     details:['ABC-XYZ segmentation: 7 of 100 products drive 82% of revenue, all with stable demand','Safety stock, reorder points and EOQ per product, replayed week by week on real demand','Root cause: First Class promises 1 day but always takes 2; Second Class ships at Standard speed','SQL Server window-function queries, Excel what-if model and a 2-page Power BI dashboard'],
     link:'https://github.com/AnilkumarSowrav/Supply-Chain-Inventory-Optimization', dash:true },
-  { id:'ecom', num:'03', kind:'End-to-end portfolio build', title:'E-commerce Analytics', tags:['SQL','Python','Power BI'],
+  { id:'ecom', thumb:{art:'ecommerce'}, num:'03', kind:'End-to-end portfolio build', title:'E-commerce Analytics', tags:['SQL','Python','Power BI'],
     summary:'Designed a star-schema warehouse in SQL Server, generated realistic multi-year sales with Python, and built a two-page Power BI dashboard on top.',
     metrics:[['$4.15M','total revenue'],['$1.61M','profit (~39% margin)'],['~7K','orders'],['$638','avg order value']],
     details:['Fact and dimension tables for sales, inventory, products, customers, suppliers and dates','Python (pyodbc + Faker) to populate data with Nov/Dec seasonal peaks','DAX measures: revenue, profit, orders and average order value','Geography page with a US revenue map and top-10 customers'],
     link:'https://github.com/AnilkumarSowrav/Ecommerce-Analytics', dash:true },
-  { id:'var', num:'04', kind:'Dell Technologies', title:'Macroeconomic Forecasting', tags:['R'],
+  { id:'var', thumb:{art:'forecast'}, num:'04', kind:'Dell Technologies', title:'Macroeconomic Forecasting', tags:['R'],
     summary:'Built VAR (vector autoregression) macroeconomic forecasting models in R as part of the Business Operations & Global BI team.',
     metrics:[],
     details:['Vector autoregression models in R','Delivered within Dell’s Business Operations & Global BI function'],
     link:'' }
 ];
+const THUMB_ART = {
+  bridge: '<svg viewBox="0 0 320 140" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 112h304"/><path d="M78 112V30M242 112V30"/><path d="M8 78C40 78 62 52 78 30c30 42 134 42 164 0 16 22 38 48 70 48"/><path d="M98 54v58M118 64v48M138 70v42M160 72v40M182 70v42M202 64v48M222 54v58M30 72v40M54 58v54M266 58v54M290 72v40" opacity=".55"/><path d="M40 128h40M120 128h80M240 128h40" opacity=".35"/></svg>',
+  inventory: '<svg viewBox="0 0 320 140" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 124h284M20 16v108" opacity=".45"/><rect x="22" y="100" width="280" height="22" fill="currentColor" stroke="none" opacity=".12"/><path d="M22 80h280" stroke-dasharray="7 8" opacity=".7"/><path d="M30 28l48 70V28l52 74V28l50 70V28l52 72V28l40 50"/><circle cx="68" cy="80" r="4.5" fill="currentColor"/><circle cx="118" cy="80" r="4.5" fill="currentColor"/><circle cx="170" cy="80" r="4.5" fill="currentColor"/><circle cx="220" cy="80" r="4.5" fill="currentColor"/></svg>',
+  ecommerce: '<svg viewBox="0 0 320 140" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 30h24l18 62h104l16-46H52"/><path d="M70 60h96M76 76h82" opacity=".45"/><circle cx="78" cy="112" r="8"/><circle cx="156" cy="112" r="8"/><path d="M206 120h96" opacity=".45"/><rect x="212" y="94" width="16" height="26" rx="2"/><rect x="236" y="76" width="16" height="44" rx="2"/><rect x="260" y="58" width="16" height="62" rx="2"/><rect x="284" y="30" width="16" height="90" rx="2" fill="currentColor" fill-opacity=".25"/></svg>',
+  forecast: '<svg viewBox="0 0 320 140" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 124h284M20 16v108" opacity=".45"/><path d="M20 98l26-12 24 8 26-22 24 6 26-26 22 10 24-20"/><path d="M192 42l28-10 28 6 28-18 24-8" stroke-dasharray="7 8"/><path d="M192 42l28 2 28 0 28-6 24-4M192 42l28-22 28-4 28-26 24-6" opacity=".35"/><circle cx="192" cy="42" r="5" fill="currentColor"/></svg>'
+};
 const FILTERS = ['All','SQL','Python','Power BI','Excel','Azure ML','R'];
 
 const SKILLS = [
@@ -572,7 +585,12 @@ function renderWork(){
   $('cards').innerHTML = PROJECTS.filter(p => state.filter==='All' || p.tags.includes(state.filter))
     .map((p, idx) => {
     const open = state.open === p.id;
+    const art = p.thumb ? (THUMB_ART[p.thumb.art] || '') : '';
+    const th = !p.thumb ? '' : p.dash
+      ? `<a class="thumb art" href="#dashboards" data-dashproj="${p.id}" aria-label="See the ${esc(p.title)} dashboard">${art}<span class="tlabel">View dashboard ↓</span></a>`
+      : `<div class="thumb art">${art}</div>`;
     return `<article class="card lift" style="--i:${idx}">
+      ${th}
       <div class="card-top"><span>${esc(p.kind)}</span><span class="num">${p.num}</span></div>
       <h3>${esc(p.title)}</h3>
       <p>${esc(p.summary)}</p>
