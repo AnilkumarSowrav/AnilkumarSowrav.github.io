@@ -13,7 +13,7 @@
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%239F1D35'/%3E%3Ctext x='32' y='42' font-family='Arial' font-weight='700' font-size='28' text-anchor='middle' fill='%23FFFFFF'%3ESA%3C/text%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500;600&family=Space+Grotesk:wght@500;600;700&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500;600&family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&display=swap">
 <style>
   /* ===== THEME — change colors here ===== */
   :root{
@@ -40,7 +40,7 @@
   html{scroll-behavior:smooth}
   body{margin:0;background:radial-gradient(1000px 520px at 80% -120px,rgba(159,29,53,.30),transparent 65%) no-repeat,var(--bg);color:var(--ink);font-family:Inter,system-ui,sans-serif}
   a{color:var(--ink)} a:hover{color:var(--accent-text)}
-  h1,h2,h3{font-family:'Space Grotesk',sans-serif;margin:0}
+  h1,h2,h3{font-family:'Fraunces',Georgia,serif;margin:0}
   .mono{font-family:'JetBrains Mono',ui-monospace,monospace}
   .wrap{max-width:1200px;margin:0 auto;padding:0 24px}
   .label{font-family:'JetBrains Mono',monospace;font-size:14px;font-weight:600;color:var(--accent-text)}
@@ -67,8 +67,8 @@
   header{position:sticky;top:0;z-index:10;background:rgba(10,14,20,.78);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
   nav{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:12px;padding:14px 24px;max-width:1200px;margin:0 auto}
   .brand{display:flex;align-items:center;gap:10px;text-decoration:none}
-  .logo{width:36px;height:36px;border-radius:10px;background:var(--accent);color:var(--on-accent);display:flex;align-items:center;justify-content:center;font:700 16px 'Space Grotesk',sans-serif}
-  .brand span:last-child{font:600 18px 'Space Grotesk',sans-serif}
+  .logo{width:36px;height:36px;border-radius:10px;background:var(--accent);color:var(--on-accent);display:flex;align-items:center;justify-content:center;font:700 16px 'Fraunces',Georgia,serif}
+  .brand span:last-child{font:600 18px 'Fraunces',Georgia,serif}
   .navlinks{display:flex;flex-wrap:wrap;align-items:center;gap:4px}
   .navlinks a{padding:12px 14px;font-size:15px;font-weight:500;text-decoration:none}
   .navlinks a.cta{background:var(--accent);color:var(--on-accent);border-radius:999px;font-weight:600;padding:12px 18px}
@@ -85,7 +85,7 @@
   .hero-copy{display:flex;flex-direction:column;gap:24px}
   .pill{align-self:flex-start;display:inline-flex;align-items:center;gap:8px;padding:8px 14px;border:1px solid var(--line);border-radius:999px;font-size:14px;font-weight:500}
   .dot{width:8px;height:8px;border-radius:50%;background:var(--accent)}
-  .hero h1{font-weight:700;font-size:clamp(48px,7vw,84px);line-height:1;letter-spacing:-.03em}
+  .hero h1{font-weight:600;font-size:clamp(48px,7vw,84px);line-height:1.02;letter-spacing:-.015em}
   .hl{background:var(--accent);color:var(--on-accent);padding:0 10px;border-radius:10px}
   .lead{margin:0;font-size:20px;line-height:1.55;color:var(--body);max-width:540px}
   #word{font-weight:600;color:var(--accent-text);border-bottom:3px solid var(--accent);transition:opacity .2s}
@@ -111,7 +111,7 @@
   /* stats */
   .stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px;padding-bottom:72px}
   .stat{background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:24px;display:flex;flex-direction:column;gap:6px}
-  .stat b{font:700 44px 'Space Grotesk',sans-serif;letter-spacing:-.02em}
+  .stat b{font:700 44px 'Fraunces',Georgia,serif;letter-spacing:-.02em}
   .stat span{font-size:15px;color:var(--muted)}
   .stat.peach{background:var(--tint-2);border-color:#6B2333} .stat.peach b{color:var(--accent-text)} .stat.peach span{color:#F6C7CF}
 
@@ -121,7 +121,7 @@
   .photo .back{position:absolute;inset:18px -18px -18px 18px;border-radius:28px;background:var(--tint-2)}
   .photo .frame{position:relative;aspect-ratio:4/5;border-radius:28px;background:var(--surface);border:2px solid var(--line);display:flex;align-items:center;justify-content:center;overflow:hidden}
   .photo .frame img{width:100%;height:100%;object-fit:cover}
-  .mono-badge{width:140px;height:140px;border-radius:50%;background:var(--accent);color:var(--on-accent);display:flex;align-items:center;justify-content:center;font:700 52px 'Space Grotesk',sans-serif}
+  .mono-badge{width:140px;height:140px;border-radius:50%;background:var(--accent);color:var(--on-accent);display:flex;align-items:center;justify-content:center;font:700 52px 'Fraunces',Georgia,serif}
   .photo .loc{position:absolute;right:-10px;bottom:28px;padding:10px 16px;border-radius:999px;background:var(--ink);color:var(--bg);font-size:14px;font-weight:600}
   .about-copy{display:flex;flex-direction:column;gap:20px}
   .about-copy p{margin:0;font-size:18px;line-height:1.65;color:var(--body)}
@@ -140,12 +140,12 @@
   .card{background:var(--surface);border:1px solid var(--line);border-radius:20px;padding:28px;display:flex;flex-direction:column;gap:16px}
   .card-top{display:flex;align-items:center;justify-content:space-between;gap:12px}
   .card-top span:first-child{font-family:'JetBrains Mono',monospace;font-size:13px;color:var(--muted)}
-  .num{width:44px;height:44px;border-radius:12px;display:flex;align-items:center;justify-content:center;font:700 15px 'Space Grotesk',sans-serif;background:var(--accent);color:var(--on-accent)}
+  .num{width:44px;height:44px;border-radius:12px;display:flex;align-items:center;justify-content:center;font:700 15px 'Fraunces',Georgia,serif;background:var(--accent);color:var(--on-accent)}
   .card h3{font-size:26px;line-height:1.15;letter-spacing:-.01em}
   .card p{margin:0;font-size:16px;line-height:1.55;color:var(--body)}
   .metrics{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
   .metric{background:var(--surface-2);border:1px solid var(--line);border-radius:12px;padding:12px 14px;display:flex;flex-direction:column;gap:2px}
-  .metric b{font:700 22px 'Space Grotesk',sans-serif} .metric span{font-size:13px;color:var(--muted)}
+  .metric b{font:700 22px 'Fraunces',Georgia,serif} .metric span{font-size:13px;color:var(--muted)}
   .tags{display:flex;flex-wrap:wrap;gap:6px}
   .tag{font-size:13px;font-weight:500;padding:5px 10px;border-radius:999px;background:var(--surface-2);border:1px solid var(--line)}
   .details{margin:0;padding:16px 0 0 18px;border-top:1px dashed var(--line-2);display:flex;flex-direction:column;gap:8px;font-size:15px;line-height:1.5;color:var(--body)}
@@ -171,7 +171,7 @@
   .dash-img:hover .zoom,.dash-img:focus-visible .zoom{opacity:1}
   .dash-notes{display:flex;flex-direction:column;gap:12px}
   .note{background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:18px 20px;display:flex;gap:14px;align-items:flex-start;animation:cardIn .45s cubic-bezier(.2,.7,.2,1) both;animation-delay:calc(var(--i,0) * 90ms)}
-  .note b{flex:none;width:32px;height:32px;border-radius:10px;background:var(--accent);color:var(--on-accent);display:flex;align-items:center;justify-content:center;font:700 14px 'Space Grotesk',sans-serif}
+  .note b{flex:none;width:32px;height:32px;border-radius:10px;background:var(--accent);color:var(--on-accent);display:flex;align-items:center;justify-content:center;font:700 14px 'Fraunces',Georgia,serif}
   .note p{margin:0;font-size:15px;line-height:1.5;color:var(--body)}
   .note strong{color:var(--ink)}
   dialog.lightbox{border:0;padding:0;background:transparent;max-width:min(96vw,1600px);width:100%}
@@ -198,7 +198,7 @@
   .step{min-height:120px;text-align:left;padding:20px;border-radius:16px;display:flex;flex-direction:column;gap:6px;font-family:Inter,sans-serif;background:var(--surface);color:var(--ink);border:1.5px solid var(--line)}
   .step.on{background:var(--accent);color:var(--on-accent);border-color:var(--accent)}
   .step small{font-family:'JetBrains Mono',monospace;font-size:13px;opacity:.8}
-  .step strong{font:600 20px/1.2 'Space Grotesk',sans-serif}
+  .step strong{font:600 20px/1.2 'Fraunces',Georgia,serif}
   .step span{font-size:14px;opacity:.85}
   .step-panel{background:var(--surface);border:1px solid var(--line);border-radius:20px;padding:32px;display:flex;flex-direction:column;gap:14px}
   .step-panel h3{font-size:28px}
